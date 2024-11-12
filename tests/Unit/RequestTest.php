@@ -16,7 +16,7 @@ it('creates a correctly formed GET Request object', function () {
     expect($request->getQueryParams())
         ->toMatchArray(['black' => 'white', 'day' => 'night'])
         ->and($request->getPath())
-        ->toBe('some/path')
+        ->toBe('/some/path')
         ->and($request->getMethod())
         ->toBe('GET');
 });
