@@ -34,6 +34,7 @@ class ComposerStaticInitcadd5573984e3854ca0455d897e92dfa
         ),
         'T' => 
         array (
+            'Tests\\' => 6,
             'Termwind\\' => 9,
         ),
         'S' => 
@@ -79,14 +80,18 @@ class ComposerStaticInitcadd5573984e3854ca0455d897e92dfa
             'Doctrine\\Deprecations\\' => 22,
             'DeepCopy\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -95,6 +100,10 @@ class ComposerStaticInitcadd5573984e3854ca0455d897e92dfa
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
         'Termwind\\' => 
         array (
@@ -199,6 +208,10 @@ class ComposerStaticInitcadd5573984e3854ca0455d897e92dfa
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
