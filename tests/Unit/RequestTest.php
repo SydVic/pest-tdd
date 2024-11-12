@@ -14,7 +14,7 @@ it('creates a correctly formed GET Request object', function () {
 
     // ASSERT
     expect($request->getQueryParams())
-        ->toMatchArray(['black' => 'white', 'day' => 'night',])
+        ->toMatchArray(['black' => 'white', 'day' => 'night'])
         ->and($request->getPath())
         ->toBe('some/path')
         ->and($request->getMethod())
