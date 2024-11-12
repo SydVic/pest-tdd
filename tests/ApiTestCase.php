@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Http\Response;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class ApiTestCase extends BaseTestCase
@@ -11,7 +12,7 @@ abstract class ApiTestCase extends BaseTestCase
         string $uri ='/',
         array $data = [],
         array $headers = []
-    ): object
+    ): Response
     {
         $body = '{"id":1,"title":"Clean Code: A Handbook of Agile Software Craftsmanship",
                     "year_published":2008,"author":{"id":1,"name":"Robert C. Martin","bio":"This is an author"}
