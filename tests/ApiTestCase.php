@@ -27,9 +27,4 @@ abstract class ApiTestCase extends BaseTestCase
             }
         };
     }
-
-    public function toMatchJson()
-    {
-
-    }
 }
