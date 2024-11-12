@@ -13,4 +13,9 @@ class Request
     {
         return new self;
     }
+
+    public function getQueryParams(): array
+    {
+        return [];
+    }
 }
