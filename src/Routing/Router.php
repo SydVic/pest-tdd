@@ -47,8 +47,9 @@ class Router
                     $handler = [new $handler[0], $handler[1]];
                 }
 
-                $response = $handler();
-                // $vars = $routeInfo[2];
+                $vars = $routeInfo[2];
+
+                $response = $handler(...$vars);
                 // ... call $handler with $vars
             break;
         }
