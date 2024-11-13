@@ -4,18 +4,18 @@ use App\Entity\Book;
 
 test('a book can be created using named constructor', function() {
     // ARRANGE
-    /*$author = Author::create(
+    $author = Author::create(
         id: 321,
         name: 'John Doe',
         bio: 'This is a bio'
-    );*/
+    );
 
     // ACT
     $book = Book::create(
         id: 123,
         title: 'Test book',
-        yearPublished: 1999
-        // author: $author
+        yearPublished: 1999,
+        author: $author
     );
 
     // ASSERT
