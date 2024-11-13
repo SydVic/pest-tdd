@@ -24,7 +24,7 @@ class BookRepository
                 books.year_published,
                 authors.id as author_id,
                 authors.name as author_name,
-                authors.biography as author_bio
+                authors.bio as author_bio
             FROM
                 books
             INNER JOIN
