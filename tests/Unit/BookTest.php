@@ -1,5 +1,6 @@
 <?php
 
+use App\Entity\Author;
 use App\Entity\Book;
 
 test('a book can be created using named constructor', function() {
@@ -22,6 +23,8 @@ test('a book can be created using named constructor', function() {
     expect($book)->toBeInstanceOf(Book::class)
     ->and($book->getId())->toBe(123)
     ->and($book->title)->toBe('Test book')
-    ->and($book->yearPublished)->toBe(1999);
-    //->and($book->author)->toBe($author);
+    ->and($book->yearPublished)->toBe(1999)
+    ->and($book->author)->toBe($author)
+    ->and($author->name)->toBe('John Doe')
+    ->and($author->bio)->toBe('This is a bio');
 });
