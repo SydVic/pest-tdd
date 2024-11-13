@@ -4,6 +4,6 @@ return [
     [
         'GET',
         '/books/{id:\d+}',
-        [\App\Controller\BookController::class, 'show']
+        [\App\Controller\BooksController::class, 'show']
     ],
 ];

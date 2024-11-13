@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Http\Response;
 
-class BookController
+class BooksController
 {
     public function show(int $id): Response
     {
