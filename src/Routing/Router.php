@@ -32,16 +32,18 @@ class Router
         $httpMethod = $request->getMethod();
         $uri = $request->getPath();
 
-        $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+        $routeInfo = $dispatcher->dispatch(httpMethod: $httpMethod, uri: $uri);
 
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
-                // ... 404 Not Found
+
+                $response = new Response(body: 'Route not Found', statusCode: Response::HTTP_NOT_FOUND);
             break;
 
             case Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
-                // ... 405 Method Not Allowed
+
+                $response = new Response(body: 'MMethod not allowed', statusCode: Response::HTTP_METHOD_NOT_ALLOWED);
             break;
 
             case Dispatcher::FOUND:
@@ -52,7 +54,6 @@ class Router
                 $handler = $this->routeHandlerResolver->resolve($handler);
 
                 $response = $handler(...$vars);
-                // ... call $handler with $vars
             break;
         }
 
