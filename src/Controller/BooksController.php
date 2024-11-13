@@ -3,12 +3,17 @@
 namespace App\Controller;
 
 use App\Http\Response;
+use App\Repository\BookRepository;
 
 class BooksController
 {
+    public function __construct(private BookRepository $bookRepository)
+    {
+    }
+
     public function show(int $id): Response
     {
-        $body = '';
+        /*$body = '';
         $statusCode = Response::HTTP_NOT_FOUND;
 
         if ($id === 1) {
@@ -25,7 +30,9 @@ class BooksController
 
             $statusCode = Response::HTTP_OK;
 
-        } else if ($id === 2) {
+        };
+
+        if ($id === 2) {
             $body = [
                 'id' => 2,
                 'title' => 'Refactoring: Improving the Design of Existing Code',
@@ -38,8 +45,10 @@ class BooksController
             ];
 
             $statusCode = Response::HTTP_OK;
-        }
+        }*/
 
-        return new Response(body: json_encode($body), statusCode: $statusCode);
+        $book = $this->bookRepository->findById($id);
+
+        return new Response(body: json_encode($book), statusCode: Response::HTTP_OK);
     }
 }
