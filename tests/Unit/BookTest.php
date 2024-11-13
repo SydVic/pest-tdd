@@ -26,5 +26,15 @@ test('a book can be created using named constructor', function() {
     ->and($book->yearPublished)->toBe(1999)
     ->and($book->author)->toBe($author)
     ->and($author->name)->toBe('John Doe')
-    ->and($author->bio)->toBe('This is a bio');
+    ->and($author->bio)->toBe('This is a bio')
+    ->and(json_encode($book))->toMatchJson([
+        'id' => 123,
+        'title' => 'Test book',
+        'yearPublished' => 1999,
+        'author' => [
+            'id' => 321,
+            'name' => 'John Doe',
+            'bio' => 'This is a bio'
+        ]
+    ]);
 });
