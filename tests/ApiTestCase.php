@@ -5,11 +5,18 @@ namespace Tests;
 use App\Http\Kernel;
 use App\Http\Request;
 use App\Http\Response;
-use App\Routing\Router;
+use League\Container\Container;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class ApiTestCase extends BaseTestCase
 {
+    private Container $container;
+
+    protected function setUp(): void
+    {
+        $this->container = include dirname(__DIR__) . '/config/services.php';
+    }
+
     public function json(
         string $method = 'GET',
         string $uri ='/',
@@ -35,7 +42,8 @@ abstract class ApiTestCase extends BaseTestCase
         );
 
         // Create / resolve the Kernel
-        $kernel = new Kernel(new Router());
+        $kernel = $this->container->get(Kernel::class);
+        dd($kernel);
 
         // Obtain a $response object: $response = $kernel->handle($request
         $response = $kernel->handle($request);
