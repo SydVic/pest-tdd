@@ -1,6 +1,6 @@
 <?php
 
-it('retrieves the correct data from the books API', function() {
+it('retrieves the correct book 1 data from the books API', function() {
     // ARRANGE
 
     // ACT
@@ -16,6 +16,26 @@ it('retrieves the correct data from the books API', function() {
                 'id' => 1,
                 'name' => 'Robert C. Martin',
                 'bio' => 'This is an author'
+            ]
+        ]);
+});
+
+it('retrieves the correct book 2 data from the books API', function() {
+    // ARRANGE
+
+    // ACT
+    $response = $this->json(method: 'GET', uri: '/books/2');
+
+    // ASSERT
+    expect($response->getStatusCode())->toBeInt()->toBe(200)
+        ->and($response->getBody())->toMatchJson([
+            'id' => 2,
+            'title' => 'Refactoring: Improving the Design of Existing Code',
+            'year_published' => 1999,
+            'author' => [
+                'id' => 2,
+                'name' => 'Martin Fowler',
+                'bio' => 'Martin\'s bio'
             ]
         ]);
 });

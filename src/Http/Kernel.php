@@ -2,8 +2,13 @@
 
 namespace App\Http;
 
+use App\Routing\Router;
+
 class Kernel
 {
+    public function __construct(
+        private Router $router
+    ){}
     public function handle(Request $request): Response
     {
         $body = '{"id":1,"title":"Clean Code: A Handbook of Agile Software Craftsmanship",
