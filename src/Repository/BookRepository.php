@@ -11,7 +11,7 @@ class BookRepository
     public function findById(int $id): ?Book
     {
         // Instantiate PDO instance
-        $dsn = '';
+        $dsn = 'sqlite:db/pest-tdd.sqlite';
         $pdo = new PDO($dsn);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -24,7 +24,7 @@ class BookRepository
                 books.year_published,
                 authors.id as author_id,
                 authors.name as author_name,
-                authors.bio as author_bio
+                authors.biography as author_bio
             FROM
                 books
             INNER JOIN
@@ -57,7 +57,7 @@ class BookRepository
         $book = Book::create(
             id: $row['id'],
             title: $row['title'],
-            yearPublished: $row['yearPublished'],
+            yearPublished: $row['year_published'],
             author: $author
         );
 

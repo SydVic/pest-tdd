@@ -11,7 +11,7 @@ it('retrieves the correct book 1 data from the books API', function() {
         ->and($response->getBody())->toMatchJson([
             'id' => 1,
             'title' => 'Clean Code: A Handbook of Agile Software Craftsmanship',
-            'year_published' => 2008,
+            'yearPublished' => 2008,
             'author' => [
                 'id' => 1,
                 'name' => 'Robert C. Martin',
@@ -31,7 +31,7 @@ it('retrieves the correct book 2 data from the books API', function() {
         ->and($response->getBody())->toMatchJson([
             'id' => 2,
             'title' => 'Refactoring: Improving the Design of Existing Code',
-            'year_published' => 1999,
+            'yearPublished' => 1999,
             'author' => [
                 'id' => 2,
                 'name' => 'Martin Fowler',
