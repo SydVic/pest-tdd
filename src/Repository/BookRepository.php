@@ -10,7 +10,7 @@ class BookRepository
     public function findById(int $id): ?Book
     {
         // Retrieve book data from the database
-        $row =[
+        $row = [
             'id' => 999,
             'title' => 'A Test Book',
             'yearPublished' => 1999,
