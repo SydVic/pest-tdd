@@ -4,6 +4,6 @@ return [
     [
         'GET',
         '/books/{id:\d+}',
-        fn() => new \App\Http\Response()
+        [\App\Controller\BookController::class, 'show']
     ],
 ];

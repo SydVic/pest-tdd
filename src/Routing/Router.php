@@ -5,7 +5,6 @@ namespace App\Routing;
 use App\Http\Request;
 use App\Http\Response;
 use FastRoute\Dispatcher;
-use FastRoute\Route;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
@@ -43,6 +42,10 @@ class Router
 
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
+
+                if (is_array($handler)) {
+                    $handler = [new $handler[0], $handler[1]];
+                }
 
                 $response = $handler();
                 // $vars = $routeInfo[2];
