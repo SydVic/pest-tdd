@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use App\Command\Migrate;
+use App\Database\Connection;
 use App\Http\Kernel;
 use App\Http\Request;
 use App\Http\Response;
@@ -45,7 +47,7 @@ abstract class ApiTestCase extends BaseTestCase
         $kernel = $this->container->get(Kernel::class);
 
         // Obtain a $response object: $response = $kernel->handle($request
-        $response = $kernel->handle($request);
+        $response = $kernel->handle(request: $request);
 
         // return the $response
         return $response;
@@ -53,7 +55,13 @@ abstract class ApiTestCase extends BaseTestCase
 
     public function migrateTestDatabase(): void
     {
-        $migrate = new Migrate();
+        $connection = $this->container->get(Connection::class);
+        $migrationsFolder = $this->container->get('migrations_folder');
+
+        $migrate = new Migrate(
+            connection: $connection,
+            migrationsFolder: $migrationsFolder
+        );
 
         $migrate->execute();
     }

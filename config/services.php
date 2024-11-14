@@ -11,6 +11,12 @@ $dotenv->load(dirname(__DIR__) . '/.env');
 $dsn = $_ENV['DSN'];
 $container->add('dsn', new \League\Container\Argument\Literal\StringArgument($dsn));
 
+$migrationsFolder = dirname(__DIR__) . '/migrations';
+$container->add(
+    'migrations_folder',
+    new \League\Container\Argument\Literal\StringArgument($migrationsFolder)
+);
+
 $routes = include __DIR__ . '/routes.php';
 
 #services
