@@ -4,8 +4,11 @@ $container = new \League\Container\Container();
 
 $container->delegate(new \League\Container\ReflectionContainer(true));
 
+$dotenv = new \Symfony\Component\Dotenv\Dotenv();
+$dotenv->load(dirname(__DIR__) . '/.env');
+
 # parameters
-$dsn = 'sqlite:db/pest-tdd.sqlite';
+$dsn = $_ENV['DSN'];
 $container->add('dsn', new \League\Container\Argument\Literal\StringArgument($dsn));
 
 $routes = include __DIR__ . '/routes.php';
@@ -22,7 +25,8 @@ $container->extend(\App\Routing\Router::class)
 $container->add(\App\Http\Kernel::class)
     ->addArguments([\App\Routing\Router::class]);
 
-$container->add(\App\Database\Connection::class)
+// shared means that once is resolved the first time if another class require it will be used the same object
+$container->addShared(\App\Database\Connection::class)
     ->addArguments(['dsn']);
 
 return $container;
