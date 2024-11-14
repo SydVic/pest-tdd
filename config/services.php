@@ -5,6 +5,7 @@ $container = new \League\Container\Container();
 $container->delegate(new \League\Container\ReflectionContainer(true));
 
 # parameters
+$dsn = 'sqlite:db/pest-tdd.sqlite';
 $routes = include __DIR__ . '/routes.php';
 
 #services
