@@ -4,17 +4,23 @@ namespace App\Repository;
 
 use App\Entity\Author;
 use App\Entity\Book;
-use PDO;
 
 class BookRepository
 {
+    public function __construct(private Connection $connection)
+    {
+    }
+
     public function findById(int $id): ?Book
     {
         // Instantiate PDO instance
-        $dsn = 'sqlite:db/pest-tdd.sqlite';
+        /*$dsn = 'sqlite:db/pest-tdd.sqlite';
         $pdo = new PDO($dsn);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);*/
+
+        // Obtain PDO instance
+        $pdo = $this->connection->getPdo();
 
         // Prepare the statement (SQL)
         $stmt = $pdo->prepare("
